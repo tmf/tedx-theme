@@ -18,7 +18,7 @@
         "behat/mink-goutte-driver": "~1.1"
     },
     "autoload": {
-        "classmap": ["classes", "features/bootstrap"]
+
     },
     "extra": {
         "wordpress-install-dir": "vendor/wordpress",
