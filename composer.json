@@ -1,0 +1,47 @@
+{
+    "name": "tedx-zurich/tedx-theme",
+    "version": "1.0",
+    "type": "wordpress-theme",
+    "description": "A WordPress Theme for TEDxZurich",
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0",
+        "tmf/wp-hookable-service": "~0.1",
+        "tmf/wp-simple-templating": "~0.1",
+        "tmf/wp-metabox-helper": "dev-master",
+        "koala-framework/composer-extra-assets": "~1.0"
+    },
+    "require-dev": {
+        "tmf/wordpress-extension": "~0.1",
+        "phpunit/phpunit": "~4.0",
+        "johnpbloch/wordpress": "~4.0",
+        "behat/mink-goutte-driver": "~1.1"
+    },
+    "autoload": {
+        "classmap": ["classes", "features/bootstrap"]
+    },
+    "extra": {
+        "wordpress-install-dir": "vendor/wordpress",
+
+        "require-bower": {
+            "selectize": "0.11.x"
+        },
+        "require-dev-npm": {
+            "bootstrap": "~3.3",
+            "grunt": "~0.4.2",
+            "grunt-spritesmith": "~2.20",
+            "pngsmith": "~0.1.3",
+            "grunt-contrib-less": "~0.11",
+            "grunt-cli": "^0.1.13",
+            "grunt-contrib-concat": "~0.5",
+            "grunt-contrib-uglify": "~0.6",
+            "grunt-images": "~0.2"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom forrer",
+            "email": "tom.forrer@gmail.com"
+        }
+    ]
+}

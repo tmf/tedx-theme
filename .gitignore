@@ -1,0 +1,8 @@
+vendor
+*.phar
+bin
+.idea
+node_modules
+.bowerrc
+bower.json
+composer.lock
