@@ -9,7 +9,7 @@
         "tmf/wp-hookable-service": "~0.1",
         "tmf/wp-simple-templating": "~0.1",
         "tmf/wp-metabox-helper": "dev-master",
-        "koala-framework/composer-extra-assets": "~1.0"
+        "koala-framework/composer-extra-assets": "dev-master"
     },
     "require-dev": {
         "tmf/wordpress-extension": "~0.1",
