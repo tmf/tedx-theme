@@ -1,0 +1,41 @@
+.pagination {
+  float: left;
+  > li {
+    > a, > span {
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: none;
+      padding: 6px;
+      min-width: 30px;
+      text-align: center;
+      color: #736D66;
+      text-shadow: 1px 1px 1px #EEEEEE;
+      #gradient > .vertical (#EEEEEE, #DDDDDD);
+    }
+
+    &.active > a, &.active > span {
+      color: #FFFFFF;
+      text-shadow: none;
+      #gradient > .vertical (#636363, #3C3C3C);
+    }
+
+    &:hover > a, &:hover > span{
+      color: #FFFFFF;
+      text-decoration: none;
+      text-shadow: none;
+      #gradient > .vertical (@brand-primary, #cf1f00);
+    }
+    &:first-child > a, &:first-child > span, &:last-child > a, &:last-child > span {
+      border-radius: 0;
+    }
+
+  }
+  & + .indicator {
+    display: inline-block;
+    float: left;
+    margin: 20px 0;
+    padding: 6px;
+    color: #999795;
+    font-weight: 500;
+  }
+}

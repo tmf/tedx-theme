@@ -1,0 +1,111 @@
+@import "icons";
+.widget-liquid-right .widget-with-selects {
+  float: left;
+  width: 100%;
+  margin-bottom: 1em;
+
+  label, input[type="text"] {
+    width: 100%; display: inline-block;
+  }
+  label > span {
+    width: 100%;
+  }
+  .hint {
+    font-style: italic;
+    color: #777;
+  }
+  .selectize-control {
+
+    &.single .selectize-input:after {
+      right: 5px;
+      margin-top: -2px;
+    }
+
+    .items {
+      padding: 2px 0 2px 2px;
+      line-height: 30px;
+      height: 36px;
+      @media screen and (max-width: 782px) {
+        padding: 5px 0 2px 5px;
+        height: 42px;
+      }
+      [data-value] {
+        float: left;
+        margin-right: 5px;
+      }
+    }
+    .items, .selectize-dropdown-content {
+      [data-value] {
+        height: 30px;
+
+        > i {
+          float: left;
+          margin-right: 5px;
+        }
+        > span {
+          float: left;
+          line-height: 30px;
+        }
+
+      }
+      [data-selectable] {
+        padding: 2px;
+      }
+
+    }
+  }
+}
+.widget-liquid-right .social-media-services {
+  ul {
+    float: left;
+    width: 100%;
+  }
+  li {
+    float: left;
+    width: 100%;
+    margin-bottom: 1em;
+    height: 36px;
+
+    .selectize-control {
+      float: left;
+      width: 45%;
+    }
+    .url-field {
+      float: left;
+      width: 45%;
+      margin: 0 0 0 2%;
+      line-height: 28px;
+    }
+    > span.dashicons {
+      float: right;
+      width: 7%;
+      height: 18px;
+      &.remove-service {
+        cursor: pointer;
+      }
+      &.reorder-service {
+        cursor: move;
+      }
+      &:before {
+        margin-top: -1px;
+        display: block;
+      }
+    }
+  }
+}
+.widget-liquid-right .teaser-widget-options {
+  &.type-alert .form-group.teaser-text {
+    display: none;
+  }
+  textarea {
+    width: 100%;
+  }
+}
+.wp-list-table {
+  .column-thumbnail {
+    width: 150px;
+  }
+  .type-speaker .column-thumbnail img {
+    border-radius: 50%;
+  }
+}

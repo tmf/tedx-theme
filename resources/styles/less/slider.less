@@ -1,0 +1,115 @@
+@import (css) "../../vendor/bower_components/slick-carousel/slick/slick.css";
+.slick-prev:before, .slick-next:before, .slick-dots li button:before {
+  font-family: "serif";
+  content: "";
+  display: inline-block;
+}
+.slick-next, .slick-prev {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  z-index: 2;
+  .transition(all .3s ease);
+
+  .slick-slider:hover & {
+    opacity: 0.75;
+
+    &:hover, &:focus {
+      background: rgba(255, 255, 255, 0.75);
+      opacity: 1;
+    }
+  }
+
+  &:before {
+    opacity: 0;
+    .transition(all .3s ease);
+
+    .slick-slider:hover & {
+      opacity: 0.75;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+}
+ .slick-next {
+   .slick-slider:hover & {
+     right: 5px;
+   }
+  @media screen and (max-width: @screen-xs-max) {
+    right: 0;
+  }
+}
+.slick-prev {
+  .slick-slider:hover & {
+    left: 5px;
+  }
+  @media screen and (max-width: @screen-xs-max) {
+    left: 0;
+  }
+}
+
+.slider {
+  .slick-list {
+    z-index: 1;
+  }
+  .slick-track {
+    background-color: #000;
+  }
+  .slick-dots {
+    bottom: 0;
+    left: auto;
+    width: auto;
+    right: 0;
+    padding: 0 10px;
+    li {
+      width: 16px;
+      height: 16px;
+      margin: 0 4px;
+      button {
+        width: 16px;
+        height: 16px;
+        &:before {
+          opacity: 1;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: @gray-dark;
+        }
+      }
+      &.slick-active button:before {
+        background: @brand-primary;
+      }
+      &:hover button:before {
+        background: #FFFFFF;
+      }
+    }
+  }
+  article {
+    header {
+      #gradient > .vertical(#323232, #010101);
+      padding: 0 20px 20px;
+      color: #CCCCCC;
+      a {
+        color: #CCCCCC;
+        border-bottom-color: #CCCCCC;
+        &:hover {
+          color: #FFFFFF;
+        }
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+        a {
+          color: @brand-primary;
+          border-bottom: none;
+        }
+      }
+
+
+    }
+  }
+
+}

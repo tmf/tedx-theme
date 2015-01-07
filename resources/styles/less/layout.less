@@ -1,0 +1,134 @@
+body {
+  background: @body-bg url('../images/background.jpg') no-repeat top center;
+  .background-size(100% auto);
+
+  &#tinymce {
+    background: #FFFFFF;
+    padding: 20px 20px 30px 20px !important;
+  }
+}
+header[role="banner"] > nav, header[role="banner"] > aside {
+  margin-bottom: 15px;
+}
+[role="main"] {
+  margin-bottom: 30px;
+}
+
+
+.white-background {
+  background: #FFFFFF;
+}
+.slider {
+  margin-bottom: 0;
+}
+.sidebar {
+  &.top {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+
+  &.footer {
+    margin-bottom: 30px;
+    font-size: 12px;
+    color: #666666;
+
+    a {
+      color: #666666;
+      text-decoration: none;
+      border-bottom: 1px dotted #666666;
+
+      &:hover {
+        color: #000000;
+        border-bottom-color: #000000;
+      }
+    }
+    li.widget {
+      padding: 8px 9px;
+
+      .home {
+        border: 0;
+
+        .logo {
+          max-width: 100%;
+          max-height: 48px;
+          width: 100%;
+          float: right;
+        }
+      }
+    }
+  }
+}
+.box {
+  .box();
+}
+section.talks {
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: 40px;
+  article.talk {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 0;
+    font-size: 12px;
+
+    a {
+      border: none;
+      display: inline-block;
+      color: #000000;
+      &:hover {
+        color: @brand-primary;
+      }
+    }
+    .talk-title {
+      margin-top: 10px;
+    }
+
+  }
+}
+@media screen and (max-width: @screen-sm-max) {
+  .container-fluid {
+    overflow: hidden;
+    padding: 0;
+  }
+  .row-offcanvas {
+    padding: 0 15px;
+    .sidebar-offcanvas {
+      bottom: 0;
+      background: #000000;
+    }
+
+  }
+
+}
+
+@media screen and (min-width:@screen-md-min ){
+  .container-fluid {
+    max-width: 940px;
+  }
+  .inset-shadow {
+    display: none;
+  }
+}
+
+nav.scroll-to-top {
+  position: absolute;
+  bottom: 30px;
+  left: -50px;
+  .icon {
+    line-height: 0;
+    border:none;
+    display: block;
+    background: #E5E5E4;
+  }
+}
+.label {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline;
+  border-bottom: 1px dotted @brand-primary;
+}
+
+& a:hover .label {
+  border-color: @link-hover-color;
+}

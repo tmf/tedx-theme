@@ -18,24 +18,38 @@
         "behat/mink-goutte-driver": "~1.1"
     },
     "autoload": {
-
+        "classmap": ["classes", "features/bootstrap"]
     },
     "extra": {
         "wordpress-install-dir": "vendor/wordpress",
 
         "require-bower": {
-            "selectize": "0.11.x"
+            "jquery": "~1.11",
+            "selectivizr": "~1.0",
+            "selectize": "0.11.x",
+            "respond": "~1.4",
+            "html5shiv": "~3.7",
+            "slick-carousel": "~1.3",
+            "picturefill": "master",
+            "fitvids": "~1.1"
         },
         "require-dev-npm": {
             "bootstrap": "~3.3",
             "grunt": "~0.4.2",
+            "browserify": "~7.0",
+            "debowerify": "~1.2",
+            "browserify-shim": "~3.8",
+            "uglifyify": "~2.6",
+            "grunt-browserify": "~3.2",
             "grunt-spritesmith": "~2.20",
             "pngsmith": "~0.1.3",
             "grunt-contrib-less": "~0.11",
             "grunt-cli": "^0.1.13",
             "grunt-contrib-concat": "~0.5",
             "grunt-contrib-uglify": "~0.6",
-            "grunt-images": "~0.2"
+            "grunt-images": "~0.2",
+            "grunt-debug-task": "~0.1",
+            "grunt-contrib-cssmin": "~0.11"
         }
     },
     "authors": [
