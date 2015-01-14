@@ -54,8 +54,12 @@ class Speakers extends HookableService
     {
         if ($query->is_main_query() && is_post_type_archive('speaker') && get_query_var('edition')) {
             $query->set('posts_per_page', -1);
+            $query->set('orderby', 'name');
+            $query->set('order', 'ASC');
         } elseif ($query->is_main_query() && is_post_type_archive('speaker')) {
             $query->set('posts_per_page', 20);
+            $query->set('orderby', 'name');
+            $query->set('order', 'ASC');
         }
     }
 
@@ -65,12 +69,12 @@ class Speakers extends HookableService
      * @param bool   $excludeCurrent
      * @return WP_Query
      */
-    public function getSpeakersQuery($edition, $numberOfSpeakers = 4, $excludeCurrent = true)
+    public function getSpeakersQuery($edition, $numberOfSpeakers = 4, $excludeCurrent = true, $order = 'rand')
     {
         $queryArguments = [
             'post_type'      => 'speaker',
             'posts_per_page' => intval($numberOfSpeakers),
-            'orderby'        => 'rand',
+            'orderby'        => $order,
             'tax_query'      => [
                 [
                     'taxonomy' => 'edition',
@@ -88,6 +92,8 @@ class Speakers extends HookableService
 
         if (intval($numberOfSpeakers) < 0) {
             $queryArguments['orderby'] = 'name';
+            $queryArguments['order'] = 'ASC';
+
         }
         if ($excludeCurrent) {
             $queryArguments['post__not_in'] = [get_the_ID()];
@@ -114,7 +120,7 @@ class Speakers extends HookableService
         $templatingService = $this->getContainer()['templating'];
 
         return $templatingService->renderTemplatePart('templates/content/speakers', 'shortcode', [
-            'speakersQuery' => $this->getSpeakersQuery($attributes['year'], -1, false)
+            'speakersQuery' => $this->getSpeakersQuery($attributes['year'], -1, false, 'title')
         ]);
     }
 

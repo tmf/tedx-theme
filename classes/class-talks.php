@@ -109,7 +109,8 @@ class Talks extends HookableService
     public function talksShortcode($attributes)
     {
         $attributes = shortcode_atts([
-            'year' => 0
+            'year' => 0,
+            'max' => 8
         ], $attributes);
 
         if (intval($attributes['year']) == 0) {
@@ -120,7 +121,7 @@ class Talks extends HookableService
         $templatingService = $this->getContainer()['templating'];
 
         return $templatingService->renderTemplatePart('templates/content/talks', 'shortcode', [
-            'talksQuery' => $this->getTalksQuery($attributes['year'])
+            'talksQuery' => $this->getTalksQuery($attributes['year'], $attributes['max'])
         ]);
 
     }
@@ -129,13 +130,15 @@ class Talks extends HookableService
      * Get a WP_Query which queries 'talk' posts associated with a specific 'edition' term
      *
      * @param string $edition the term slug from the edition taxonomy
+     * @param int $max the maximum number of talks
      * @return WP_Query
      */
-    public function getTalksQuery($edition)
+    public function getTalksQuery($edition, $max = -1)
     {
         return new WP_Query([
             'post_type'       => 'talk',
-            'number_of_posts' => -1,
+            'posts_per_page' => $max,
+            'orderby' => 'rand',
             'tax_query'       => [
                 [
                     'taxonomy' => 'edition',

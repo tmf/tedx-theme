@@ -10,7 +10,7 @@ use TEDxZurich\Theme\Images;
  */
 $imageService = $services['images'];
 ?>
-<article class="talk col-xs-6 col-sm-3">
+<article class="talk col-xs-6 clear-xs-6 col-sm-3 clear-sm-3 clear-md-3">
     <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
         <section class="post-image">
             <?php echo $imageService->getResponsiveAttachment(

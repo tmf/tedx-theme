@@ -8,10 +8,23 @@
     }
   }
   article.speaker.preview {
-    margin: 0 0 15px;
+    margin: 0 0 20px;
+
+    .page-template-full-width & {
+      .make-md-column(2);
+      clear:none;
+      @media screen and (min-width: @screen-md-min) {
+
+        &:nth-of-type(6n+1) {
+          clear: both;
+        }
+
+      }
+    }
     header h1 {
       text-align: center;
       margin: 0;
+      line-height: 11px;
       a {
         display: inline-block;
       }

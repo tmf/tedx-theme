@@ -2921,6 +2921,9 @@ header[role="banner"] > aside {
   margin-top: 10px;
   margin-bottom: 25px;
 }
+.sidebar.top .label {
+  font-size: 10px;
+}
 .sidebar.footer {
   margin-bottom: 30px;
   font-size: 12px;
@@ -3012,7 +3015,7 @@ nav.scroll-to-top .icon {
   background: #E5E5E4;
 }
 .label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   text-transform: uppercase;
   display: inline;
@@ -5101,11 +5104,30 @@ The provided classes are intended to be used with the array-like variables
   padding: 0 20px;
 }
 .posts-column article.speaker.preview {
-  margin: 0 0 15px;
+  margin: 0 0 20px;
+}
+.page-template-full-width .posts-column article.speaker.preview {
+  position: relative;
+  min-height: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+  clear: none;
+}
+@media (min-width: 992px) {
+  .page-template-full-width .posts-column article.speaker.preview {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .page-template-full-width .posts-column article.speaker.preview:nth-of-type(6n+1) {
+    clear: both;
+  }
 }
 .posts-column article.speaker.preview header h1 {
   text-align: center;
   margin: 0;
+  line-height: 11px;
 }
 .posts-column article.speaker.preview header h1 a {
   display: inline-block;
