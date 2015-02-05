@@ -88,6 +88,10 @@ class Posts extends HookableService
                 $attributes['id']
             ]
         ]);
+        return $this->renderPostsFromQuery($query);
+    }
+
+    public function renderPostsFromQuery(WP_Query $query){
         ob_start();
         while ($query->have_posts()) {
             $query->the_post();

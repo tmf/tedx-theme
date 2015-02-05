@@ -85,7 +85,8 @@ class Talks extends HookableService
     }
 
     /**
-     * Callback for the PostsDropdownItem metabox item: generate a structured output from available 'talk' posts (only with thumbnails).
+     * Callback for the PostsDropdownItem metabox item: generate a structured output from available 'talk' posts (only
+     * with thumbnails).
      *
      * @return array
      */
@@ -110,7 +111,7 @@ class Talks extends HookableService
     {
         $attributes = shortcode_atts([
             'year' => 0,
-            'max' => 8
+            'max'  => 8
         ], $attributes);
 
         if (intval($attributes['year']) == 0) {
@@ -121,7 +122,7 @@ class Talks extends HookableService
         $templatingService = $this->getContainer()['templating'];
 
         return $templatingService->renderTemplatePart('templates/content/talks', 'shortcode', [
-            'talksQuery' => $this->getTalksQuery($attributes['year'], $attributes['max'])
+            'talksQuery' => $this->getTalksByEditionQuery($attributes['year'], $attributes['max'])
         ]);
 
     }
@@ -130,16 +131,16 @@ class Talks extends HookableService
      * Get a WP_Query which queries 'talk' posts associated with a specific 'edition' term
      *
      * @param string $edition the term slug from the edition taxonomy
-     * @param int $max the maximum number of talks
+     * @param int    $max     the maximum number of talks
      * @return WP_Query
      */
-    public function getTalksQuery($edition, $max = -1)
+    public function getTalksByEditionQuery($edition, $max = -1)
     {
         return new WP_Query([
-            'post_type'       => 'talk',
+            'post_type'      => 'talk',
             'posts_per_page' => $max,
-            'orderby' => 'rand',
-            'tax_query'       => [
+            'orderby'        => 'rand',
+            'tax_query'      => [
                 [
                     'taxonomy' => 'edition',
                     'field'    => 'slug',
@@ -147,5 +148,20 @@ class Talks extends HookableService
                 ]
             ]
         ]);
+    }
+
+    /**
+     * @param $speakerId
+     * @return WP_Query
+     */
+    public function getTalksBySpeakerQuery($speakerId)
+    {
+        return new WP_Query(['post_type' => 'talk', 'posts_per_page' => -1, 'meta_query' => [
+            [
+                'key' => '_talk_speaker',
+                'value' => intval($speakerId),
+                'type' => 'NUMERIC'
+            ]
+        ]]);
     }
 } 

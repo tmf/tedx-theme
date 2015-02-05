@@ -11,6 +11,9 @@
                 <?php the_title(); ?>
             </h1>
         </header>
+        <?php
+        echo $services['posts']->renderPostsFromQuery($services['talks']->getTalksBySpeakerQuery(get_the_ID()));
+        ?>
 
         <div class="col-xs-12">
             <?php get_template_part('templates/content/post', 'content'); ?>

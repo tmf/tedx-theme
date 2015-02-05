@@ -5,7 +5,9 @@
 
 namespace TEDxZurich\Theme;
 
-use Tmf\Wordpress\Container\HookableService;
+use Tmf\Wordpress\Container\HookableService,
+    Tmf\Wordpress\Service\Metabox\Metabox,
+    Tmf\Wordpress\Service\Metabox\Item\ContentItem;
 
 use WP_Post,
     WP_Query;
@@ -45,6 +47,17 @@ class Speakers extends HookableService
 
         add_filter('pre_get_posts', [$this, 'prepareArchiveQuery']);
         add_shortcode('speakers', [$this, 'speakersShortcode']);
+        add_action('admin_init', [$this, 'registerMetabox']);
+    }
+
+    /**
+     * register a metabox for the 'speaker' post type providing a connection to the associated talk with a dropdown item
+     */
+    public function registerMetabox()
+    {
+        $services = $this->getContainer();
+        $services['metaboxes']['talks_by_speakers'] = new Metabox('Talks', ['speaker'], 'normal', 'high');
+        $services['metaboxes']['talks_by_speakers']['_speaker_talk'] = new ContentItem(['content' => [$this, 'getTalksBySpeakerOverview']]);
     }
 
     /**
@@ -158,5 +171,21 @@ class Speakers extends HookableService
                 'data'  => ['data' => htmlentities(json_encode($speaker))]
             ];
         }, $this->getSpeakersWithThumbnails());
+    }
+
+    /**
+     * @param WP_Post $speaker
+     * @return mixed
+     */
+    public function getTalksBySpeakerOverview(WP_Post $speaker)
+    {
+        $talksService = $this->getContainer()['talks'];
+        /** @var WP_Query $talksBySpeakerQuery */
+        $talksBySpeakerQuery = $talksService->getTalksBySpeakerQuery($speaker->ID);
+
+        return array_reduce($talksBySpeakerQuery->get_posts(), function ($html, WP_Post $talk) {
+            return $html . sprintf('<p><a href="%s" target="_blank">%s</a></p>', get_edit_post_link($talk->ID), $talk->post_title);
+        }, '');
+
     }
 } 
